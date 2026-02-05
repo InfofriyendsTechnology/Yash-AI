@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "echo 'Skipping Electron build for Vercel'",
-    "build:electron": "electron-builder --win --x64 --config.win.target=portable",
+    "build:electron": "electron-builder --win nsis --x64",
     "build:dir": "electron-builder --win --x64 --dir",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,29 +35,14 @@
     "npmRebuild": false,
     "buildDependenciesFromSource": false,
     "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": ["x64"]
-        }
-      ],
-      "icon": "icon.ico"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "icon.icns",
-      "category": "public.app-category.developer-tools"
+      "target": "nsis",
+      "sign": null
     },
     "nsis": {
-      "oneClick": true,
-      "perMachine": false,
-      "allowElevation": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "installerIcon": "icon.ico",
-      "uninstallerIcon": "icon.ico",
-      "installerHeaderIcon": "icon.ico",
-      "deleteAppDataOnUninstall": false
+      "createStartMenuShortcut": true
     },
     "files": [
       "**/*",
