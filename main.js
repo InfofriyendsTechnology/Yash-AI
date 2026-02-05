@@ -52,8 +52,8 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
-    icon: path.join(__dirname, 'LOGO.png'),
-    title: 'Yash AI - Warp Automation',
+    icon: path.join(__dirname, 'icon.ico'),
+    title: 'Yash AI - Warp History Manager',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -63,8 +63,8 @@ function createWindow() {
 
   mainWindow.loadFile('index.html');
   
-  // Open DevTools in development
-  mainWindow.webContents.openDevTools();
+  // Open DevTools only in development
+  // mainWindow.webContents.openDevTools();
 }
 
 // Initialize Warp database connection

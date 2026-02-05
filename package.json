@@ -35,20 +35,37 @@
     "npmRebuild": false,
     "buildDependenciesFromSource": false,
     "win": {
-      "target": "nsis",
-      "icon": "LOGO.png",
-      "sign": null
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "icon.icns",
+      "category": "public.app-category.developer-tools"
     },
     "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
+      "oneClick": true,
+      "perMachine": false,
+      "allowElevation": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "installerHeaderIcon": "icon.ico",
+      "deleteAppDataOnUninstall": false
     },
     "files": [
       "**/*",
       "!node_modules/**/*",
-      "node_modules/sqlite3/**/*"
+      "node_modules/sqlite3/**/*",
+      "!dist/**/*",
+      "!*.md",
+      "!create-icon.js"
     ]
   }
 }
