@@ -1,0 +1,123 @@
+// =============================================================================
+// NFCWALA FRONTEND THEME VARIABLES
+// =============================================================================
+
+// Colors - Matching Landing Page
+// -----------------------------------------------------------------------------
+$color-primary: var(--bg-primary, #0b0b0b);
+$color-primary-light: #1a1a1a;
+$color-primary-dark: #000000;
+$color-accent: var(--color-accent, #C0C0C0);
+$color-accent-light: #f8f9fa;
+$color-accent-dark: #6c757d;
+$color-white: var(--text-primary, #ffffff);
+
+// Color Gradients - Using CSS custom properties for dynamic theming
+$color-accent-gradient: var(--color-accent-gradient, linear-gradient(135deg, #C0C0C0, #E8E8E8));
+$color-accent-gradient-light: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+$color-accent-gradient-dark: linear-gradient(135deg, #e9ecef 0%, #adb5bd 50%, #6c757d 100%);
+$color-accent-glow: rgba(255, 255, 255, 0.3);
+
+// Status Colors
+$color-success: #10b981;
+$color-error: #ef4444;
+$color-warning: #f59e0b;
+$color-info: #3b82f6;
+
+// Gray Scale - Using CSS custom properties
+$color-gray-100: #f5f5f5;
+$color-gray-200: #e5e5e5;
+$color-gray-300: #d4d4d4;
+$color-gray-400: var(--text-secondary, #a3a3a3);
+$color-gray-500: var(--text-tertiary, #737373);
+$color-gray-600: var(--text-muted, #525252);
+$color-gray-700: #404040;
+$color-gray-800: #262626;
+$color-gray-900: #171717;
+
+// Glow Effects
+$glow-primary: rgba(255, 255, 255, 0.15);
+$glow-secondary: rgba(173, 181, 189, 0.1);
+$glow-intense: rgba(255, 255, 255, 0.4);
+$glow-gradient: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(173, 181, 189, 0.1) 50%, rgba(108, 117, 125, 0.05) 100%);
+
+// Background Colors - Using CSS custom properties for theme support
+$bg-primary: var(--bg-primary, #0b0b0b);
+$bg-card: var(--bg-card, rgba(26, 26, 26, 0.8));
+$bg-card-hover: var(--bg-hover, rgba(26, 26, 26, 0.95));
+$bg-overlay: rgba(11, 11, 11, 0.9);
+
+// Spacing
+// -----------------------------------------------------------------------------
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-2xl: 3rem;
+$space-3xl: 4rem;
+$space-4xl: 6rem;
+$space-5xl: 8rem;
+
+// Border Radius
+// -----------------------------------------------------------------------------
+$radius-sm: 0.375rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-2xl: 1.5rem;
+$radius-full: 9999px;
+
+// Typography
+// -----------------------------------------------------------------------------
+// Font Families - Dynamic font from settings (Khand is default)
+$font-primary: var(--font-primary, 'Khand', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif);
+$font-heading: var(--font-primary, 'Khand', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif);
+
+// Font Sizes - Optimized for readability across all screens
+$font-size-xs: 0.75rem;     // 12px
+$font-size-sm: 0.875rem;    // 14px
+$font-size-base: 0.9375rem; // 15px (base for body text)
+$font-size-md: 1rem;        // 16px
+$font-size-lg: 1.125rem;    // 18px
+$font-size-xl: 1.25rem;     // 20px
+$font-size-2xl: 1.5rem;     // 24px
+$font-size-3xl: 1.875rem;   // 30px
+$font-size-4xl: 2.25rem;    // 36px
+$font-size-5xl: 3rem;       // 48px
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line Heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+
+// Shadows - Using CSS custom properties for theme support
+// -----------------------------------------------------------------------------
+$shadow-sm: var(--shadow-sm, 0 1px 2px 0 rgba(0, 0, 0, 0.05));
+$shadow-md: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+$shadow-lg: var(--shadow-lg, 0 10px 15px -3px rgba(0, 0, 0, 0.1));
+$shadow-xl: var(--shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1));
+$shadow-glow: var(--shadow-glow, 0 0 20px rgba(255, 255, 255, 0.3));
+$shadow-glow-intense: 0 0 40px $glow-intense;
+
+// Transitions
+// -----------------------------------------------------------------------------
+$transition-fast: 0.15s ease-out;
+$transition-normal: 0.3s ease-out;
+$transition-slow: 0.5s ease-out;
+$transition-bounce: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

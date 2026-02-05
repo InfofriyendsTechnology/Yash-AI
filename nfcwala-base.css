@@ -1,0 +1,787 @@
+/* =============================================================================
+ * NFCWALA FRONTEND - GLOBAL STYLES
+ * ============================================================================= */
+
+/* Import Khand Font (Default) */
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300;400;500;600;700&display=swap');
+
+/* CSS Reset & Base */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  
+  @media (max-width: 1440px) {
+    font-size: 15px;
+  }
+  
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary, 'Khand', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: var(--transition-theme);
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+
+/* Date Input Styling - Calendar Icon with Theme Color Glow */
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"] {
+  position: relative;
+}
+
+/* Dark Mode */
+html.dark-mode input[type="date"],
+html.dark-mode input[type="datetime-local"],
+html.dark-mode input[type="time"],
+html:not(.light-mode) input[type="date"],
+html:not(.light-mode) input[type="datetime-local"],
+html:not(.light-mode) input[type="time"] {
+  color-scheme: dark;
+  color: var(--text-primary) !important;
+}
+
+html.dark-mode input[type="date"]::-webkit-calendar-picker-indicator,
+html.dark-mode input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html.dark-mode input[type="time"]::-webkit-calendar-picker-indicator,
+html:not(.light-mode) input[type="date"]::-webkit-calendar-picker-indicator,
+html:not(.light-mode) input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html:not(.light-mode) input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  /* Keep natural icon (appears white in dark mode) */
+  filter: none;
+}
+
+html.dark-mode input[type="date"]::-webkit-calendar-picker-indicator:hover,
+html.dark-mode input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+html.dark-mode input[type="time"]::-webkit-calendar-picker-indicator:hover,
+html:not(.light-mode) input[type="date"]::-webkit-calendar-picker-indicator:hover,
+html:not(.light-mode) input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+html:not(.light-mode) input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  /* Add theme color glow on hover */
+  filter: drop-shadow(0 0 4px var(--color-accent));
+}
+
+/* Light Mode */
+html.light-mode input[type="date"],
+html.light-mode input[type="datetime-local"],
+html.light-mode input[type="time"] {
+  color-scheme: light;
+  color: var(--text-primary) !important;
+}
+
+html.light-mode input[type="date"]::-webkit-calendar-picker-indicator,
+html.light-mode input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+html.light-mode input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  /* Invert to make dark for light mode */
+  filter: invert(1);
+}
+
+html.light-mode input[type="date"]::-webkit-calendar-picker-indicator:hover,
+html.light-mode input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover,
+html.light-mode input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  /* Add theme color glow on hover */
+  filter: invert(1) drop-shadow(0 0 3px var(--color-accent));
+}
+
+/* Autofill Styles - Maintain Theme Colors */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox Autofill */
+input:-moz-autofill,
+input:-moz-autofill-preview,
+textarea:-moz-autofill,
+textarea:-moz-autofill-preview,
+select:-moz-autofill,
+select:-moz-autofill-preview {
+  filter: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove autofill yellow/white background completely */
+input:autofill,
+textarea:autofill,
+select:autofill {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar - Thin and Subtle */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.02);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =============================================================================
+ * THEME MODE VARIABLES - DARK & LIGHT
+ * ============================================================================= */
+
+/* Default root variables (can be overridden by themes) */
+:root {
+  --sidebar-width: 260px;
+  
+  /* Transitions */
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* DARK MODE (Default) */
+html.dark-mode,
+html:not(.light-mode) {
+  /* Backgrounds */
+  --bg-primary: #0b0b0b;
+  --bg-secondary: #121212;
+  --bg-card: rgba(20, 20, 20, 0.6);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(255, 255, 255, 0.1);
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1a1;
+  --text-tertiary: #737373;
+  --text-muted: #525252;
+  
+  /* Borders */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-light: rgba(255, 255, 255, 0.05);
+  --border-color-strong: rgba(255, 255, 255, 0.2);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+  
+  /* Input backgrounds */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus-border: var(--color-accent);
+  
+  /* Scrollbar */
+  --scrollbar-track: rgba(255, 255, 255, 0.02);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+}
+
+/* Dark Mode - Default Accent Colors for each theme */
+/* GOLDS & CHAMPAGNES */
+html.dark-mode[data-theme="champagne-gold"],
+html:not(.light-mode)[data-theme="champagne-gold"] {
+  --color-accent: #DFC2A4;
+  --color-accent-gradient: linear-gradient(135deg, #AA8863 0%, #C9A579 25%, #DFC2A4 50%, #C9A579 75%, #AA8863 100%);
+}
+
+html.dark-mode[data-theme="amber-gold"],
+html:not(.light-mode)[data-theme="amber-gold"] {
+  --color-accent: #E6C78A;
+  --color-accent-gradient: linear-gradient(135deg, #C9A667 0%, #E6C78A 25%, #F5DDB0 50%, #E6C78A 75%, #C9A667 100%);
+}
+
+html.dark-mode[data-theme="rose-gold"],
+html:not(.light-mode)[data-theme="rose-gold"] {
+  --color-accent: #E0B0A0;
+  --color-accent-gradient: linear-gradient(135deg, #B87676 0%, #E0B0A0 25%, #F5D5C0 50%, #E0B0A0 75%, #B87676 100%);
+}
+
+/* SILVERS & GRAYS */
+html.dark-mode[data-theme="silver"],
+html:not(.light-mode)[data-theme="silver"] {
+  --color-accent: #C0C0C0;
+  --color-accent-gradient: linear-gradient(135deg, #A8A8A8 0%, #D3D3D3 25%, #E8E8E8 50%, #D3D3D3 75%, #A8A8A8 100%);
+}
+
+html.dark-mode[data-theme="platinum"],
+html:not(.light-mode)[data-theme="platinum"] {
+  --color-accent: #E5E4E2;
+  --color-accent-gradient: linear-gradient(135deg, #BCC0C5 0%, #E5E4E2 25%, #F8F8F8 50%, #E5E4E2 75%, #BCC0C5 100%);
+}
+
+html.dark-mode[data-theme="chrome"],
+html:not(.light-mode)[data-theme="chrome"] {
+  --color-accent: #D4D4D4;
+  --color-accent-gradient: linear-gradient(135deg, #B8B8B8 0%, #D4D4D4 25%, #E8E8E8 50%, #D4D4D4 75%, #B8B8B8 100%);
+}
+
+html.dark-mode[data-theme="pearl-white"],
+html:not(.light-mode)[data-theme="pearl-white"] {
+  --color-accent: #F5F5DC;
+  --color-accent-gradient: linear-gradient(135deg, #E8E8D0 0%, #F5F5DC 25%, #FFFEF0 50%, #F5F5DC 75%, #E8E8D0 100%);
+}
+
+/* BLUES */
+html.dark-mode[data-theme="sapphire-blue"],
+html:not(.light-mode)[data-theme="sapphire-blue"] {
+  --color-accent: #A8C5DD;
+  --color-accent-gradient: linear-gradient(135deg, #6B8CAE 0%, #8FA9C7 25%, #A8C5DD 50%, #8FA9C7 75%, #6B8CAE 100%);
+}
+
+html.dark-mode[data-theme="steel-blue"],
+html:not(.light-mode)[data-theme="steel-blue"] {
+  --color-accent: #B0C4DE;
+  --color-accent-gradient: linear-gradient(135deg, #7A9AB8 0%, #95AFC9 25%, #B0C4DE 50%, #95AFC9 75%, #7A9AB8 100%);
+}
+
+html.dark-mode[data-theme="azure-blue"],
+html:not(.light-mode)[data-theme="azure-blue"] {
+  --color-accent: #C8E0F0;
+  --color-accent-gradient: linear-gradient(135deg, #92B4D4 0%, #AAC7E2 25%, #C8E0F0 50%, #AAC7E2 75%, #92B4D4 100%);
+}
+
+html.dark-mode[data-theme="navy-metallic"],
+html:not(.light-mode)[data-theme="navy-metallic"] {
+  --color-accent: #8FA4C0;
+  --color-accent-gradient: linear-gradient(135deg, #5A6F8B 0%, #7489A5 25%, #8FA4C0 50%, #7489A5 75%, #5A6F8B 100%);
+}
+
+/* PURPLES & VIOLETS */
+html.dark-mode[data-theme="amethyst"],
+html:not(.light-mode)[data-theme="amethyst"] {
+  --color-accent: #D4BBD8;
+  --color-accent-gradient: linear-gradient(135deg, #9E7FA2 0%, #B99DBD 25%, #D4BBD8 50%, #B99DBD 75%, #9E7FA2 100%);
+}
+
+html.dark-mode[data-theme="lavender"],
+html:not(.light-mode)[data-theme="lavender"] {
+  --color-accent: #E6D5E8;
+  --color-accent-gradient: linear-gradient(135deg, #B09FB2 0%, #C8B7CA 25%, #E6D5E8 50%, #C8B7CA 75%, #B09FB2 100%);
+}
+
+html.dark-mode[data-theme="plum"],
+html:not(.light-mode)[data-theme="plum"] {
+  --color-accent: #C9A8C7;
+  --color-accent-gradient: linear-gradient(135deg, #937291 0%, #AE8AAC 25%, #C9A8C7 50%, #AE8AAC 75%, #937291 100%);
+}
+
+/* PINKS & ROSES */
+html.dark-mode[data-theme="blush-pink"],
+html:not(.light-mode)[data-theme="blush-pink"] {
+  --color-accent: #F5D5D8;
+  --color-accent-gradient: linear-gradient(135deg, #BF9FA2 0%, #DABABA 25%, #F5D5D8 50%, #DABABA 75%, #BF9FA2 100%);
+}
+
+html.dark-mode[data-theme="dusty-rose"],
+html:not(.light-mode)[data-theme="dusty-rose"] {
+  --color-accent: #D8B5B8;
+  --color-accent-gradient: linear-gradient(135deg, #A27F82 0%, #BD9A9D 25%, #D8B5B8 50%, #BD9A9D 75%, #A27F82 100%);
+}
+
+html.dark-mode[data-theme="mauve"],
+html:not(.light-mode)[data-theme="mauve"] {
+  --color-accent: #E0C5D8;
+  --color-accent-gradient: linear-gradient(135deg, #AA8FA2 0%, #C5AABD 25%, #E0C5D8 50%, #C5AABD 75%, #AA8FA2 100%);
+}
+
+/* REDS & BURGUNDIES */
+html.dark-mode[data-theme="burgundy"],
+html:not(.light-mode)[data-theme="burgundy"] {
+  --color-accent: #B89098;
+  --color-accent-gradient: linear-gradient(135deg, #825A62 0%, #9D757D 25%, #B89098 50%, #9D757D 75%, #825A62 100%);
+}
+
+html.dark-mode[data-theme="wine-red"],
+html:not(.light-mode)[data-theme="wine-red"] {
+  --color-accent: #C8A5A8;
+  --color-accent-gradient: linear-gradient(135deg, #926F72 0%, #AD8A8D 25%, #C8A5A8 50%, #AD8A8D 75%, #926F72 100%);
+}
+
+html.dark-mode[data-theme="crimson"],
+html:not(.light-mode)[data-theme="crimson"] {
+  --color-accent: #D8A8AD;
+  --color-accent-gradient: linear-gradient(135deg, #A27277 0%, #BD8A8F 25%, #D8A8AD 50%, #BD8A8F 75%, #A27277 100%);
+}
+
+/* GREENS */
+html.dark-mode[data-theme="sage-green"],
+html:not(.light-mode)[data-theme="sage-green"] {
+  --color-accent: #C5D5C8;
+  --color-accent-gradient: linear-gradient(135deg, #8F9F92 0%, #AAB9AD 25%, #C5D5C8 50%, #AAB9AD 75%, #8F9F92 100%);
+}
+
+html.dark-mode[data-theme="mint"],
+html:not(.light-mode)[data-theme="mint"] {
+  --color-accent: #D5E8DF;
+  --color-accent-gradient: linear-gradient(135deg, #9FB2A9 0%, #BACDC4 25%, #D5E8DF 50%, #BACDC4 75%, #9FB2A9 100%);
+}
+
+html.dark-mode[data-theme="emerald"],
+html:not(.light-mode)[data-theme="emerald"] {
+  --color-accent: #A8C8B8;
+  --color-accent-gradient: linear-gradient(135deg, #729282 0%, #8DAD9D 25%, #A8C8B8 50%, #8DAD9D 75%, #729282 100%);
+}
+
+html.dark-mode[data-theme="olive"],
+html:not(.light-mode)[data-theme="olive"] {
+  --color-accent: #C8C5A8;
+  --color-accent-gradient: linear-gradient(135deg, #928F72 0%, #ADAA8D 25%, #C8C5A8 50%, #ADAA8D 75%, #928F72 100%);
+}
+
+/* TEALS & AQUAS */
+html.dark-mode[data-theme="teal"],
+html:not(.light-mode)[data-theme="teal"] {
+  --color-accent: #A8C8C8;
+  --color-accent-gradient: linear-gradient(135deg, #729292 0%, #8DADAD 25%, #A8C8C8 50%, #8DADAD 75%, #729292 100%);
+}
+
+html.dark-mode[data-theme="aquamarine"],
+html:not(.light-mode)[data-theme="aquamarine"] {
+  --color-accent: #C8E0E0;
+  --color-accent-gradient: linear-gradient(135deg, #92AAAA 0%, #AAC5C5 25%, #C8E0E0 50%, #AAC5C5 75%, #92AAAA 100%);
+}
+
+html.dark-mode[data-theme="turquoise"],
+html:not(.light-mode)[data-theme="turquoise"] {
+  --color-accent: #B8D8D0;
+  --color-accent-gradient: linear-gradient(135deg, #82A29A 0%, #9DBDB5 25%, #B8D8D0 50%, #9DBDB5 75%, #82A29A 100%);
+}
+
+/* PEACHES & CORALS */
+html.dark-mode[data-theme="peach"],
+html:not(.light-mode)[data-theme="peach"] {
+  --color-accent: #F5D5C5;
+  --color-accent-gradient: linear-gradient(135deg, #BF9F8F 0%, #DABAAA 25%, #F5D5C5 50%, #DABAAA 75%, #BF9F8F 100%);
+}
+
+html.dark-mode[data-theme="coral"],
+html:not(.light-mode)[data-theme="coral"] {
+  --color-accent: #E8C5B8;
+  --color-accent-gradient: linear-gradient(135deg, #B28F82 0%, #CDAA9D 25%, #E8C5B8 50%, #CDAA9D 75%, #B28F82 100%);
+}
+
+/* BROWNS & TANS */
+html.dark-mode[data-theme="taupe"],
+html:not(.light-mode)[data-theme="taupe"] {
+  --color-accent: #C8B8B0;
+  --color-accent-gradient: linear-gradient(135deg, #92827A 0%, #AD9D95 25%, #C8B8B0 50%, #AD9D95 75%, #92827A 100%);
+}
+
+html.dark-mode[data-theme="mocha"],
+html:not(.light-mode)[data-theme="mocha"] {
+  --color-accent: #D8C5B8;
+  --color-accent-gradient: linear-gradient(135deg, #A28F82 0%, #BDAA9D 25%, #D8C5B8 50%, #BDAA9D 75%, #A28F82 100%);
+}
+
+html.dark-mode[data-theme="caramel"],
+html:not(.light-mode)[data-theme="caramel"] {
+  --color-accent: #E6D0B8;
+  --color-accent-gradient: linear-gradient(135deg, #B09A82 0%, #CBB59D 25%, #E6D0B8 50%, #CBB59D 75%, #B09A82 100%);
+}
+
+/* LIGHT MODE */
+html.light-mode {
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: #ffffff;
+  --bg-hover: rgba(0, 0, 0, 0.03);
+  --bg-active: rgba(0, 0, 0, 0.06);
+  
+  /* Text Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  
+  /* Borders - Much stronger for visibility */
+  --border-color: rgba(0, 0, 0, 0.15);
+  --border-color-light: rgba(0, 0, 0, 0.08);
+  --border-color-strong: rgba(0, 0, 0, 0.25);
+  
+  /* Shadows - Stronger for better depth */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 0 3px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Input backgrounds */
+  --input-bg: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.2);
+  --input-focus-border: var(--color-accent);
+  
+  /* Scrollbar */
+  --scrollbar-track: rgba(0, 0, 0, 0.05);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode - Dark Accent Color Overrides */
+/* These ensure accent colors are dark enough for white text in light mode */
+/* GOLDS & CHAMPAGNES */
+html.light-mode[data-theme="champagne-gold"] {
+  --color-accent: #8B6F47;
+  --color-accent-gradient: linear-gradient(135deg, #6B5435 0%, #8B6F47 25%, #A68A5C 50%, #8B6F47 75%, #6B5435 100%);
+}
+
+html.light-mode[data-theme="amber-gold"] {
+  --color-accent: #9B7E4A;
+  --color-accent-gradient: linear-gradient(135deg, #7A6238 0%, #9B7E4A 25%, #B8995C 50%, #9B7E4A 75%, #7A6238 100%);
+}
+
+html.light-mode[data-theme="rose-gold"] {
+  --color-accent: #a05a50;
+  --color-accent-gradient: linear-gradient(135deg, #803030 0%, #a05a50 25%, #c08070 50%, #a05a50 75%, #803030 100%);
+}
+
+/* SILVERS & GRAYS */
+html.light-mode[data-theme="silver"] {
+  --color-accent: #666666;
+  --color-accent-gradient: linear-gradient(135deg, #4a4a4a 0%, #666666 25%, #7a7a7a 50%, #666666 75%, #4a4a4a 100%);
+}
+
+html.light-mode[data-theme="platinum"] {
+  --color-accent: #7a7a7a;
+  --color-accent-gradient: linear-gradient(135deg, #5a5a5a 0%, #7a7a7a 25%, #8f8f8f 50%, #7a7a7a 75%, #5a5a5a 100%);
+}
+
+html.light-mode[data-theme="chrome"] {
+  --color-accent: #7C7C7C;
+  --color-accent-gradient: linear-gradient(135deg, #606060 0%, #7C7C7C 25%, #969696 50%, #7C7C7C 75%, #606060 100%);
+}
+
+html.light-mode[data-theme="pearl-white"] {
+  --color-accent: #A8A890;
+  --color-accent-gradient: linear-gradient(135deg, #8B8B75 0%, #A8A890 25%, #C5C5AB 50%, #A8A890 75%, #8B8B75 100%);
+}
+
+/* BLUES */
+html.light-mode[data-theme="sapphire-blue"] {
+  --color-accent: #4A6B8A;
+  --color-accent-gradient: linear-gradient(135deg, #2F4F6E 0%, #4A6B8A 25%, #6587A5 50%, #4A6B8A 75%, #2F4F6E 100%);
+}
+
+html.light-mode[data-theme="steel-blue"] {
+  --color-accent: #5B7A99;
+  --color-accent-gradient: linear-gradient(135deg, #3F5E7D 0%, #5B7A99 25%, #7796B4 50%, #5B7A99 75%, #3F5E7D 100%);
+}
+
+html.light-mode[data-theme="azure-blue"] {
+  --color-accent: #6D94B8;
+  --color-accent-gradient: linear-gradient(135deg, #51789C 0%, #6D94B8 25%, #89B0D4 50%, #6D94B8 75%, #51789C 100%);
+}
+
+html.light-mode[data-theme="navy-metallic"] {
+  --color-accent: #3F5470;
+  --color-accent-gradient: linear-gradient(135deg, #2A3F5B 0%, #3F5470 25%, #546985 50%, #3F5470 75%, #2A3F5B 100%);
+}
+
+/* PURPLES & VIOLETS */
+html.light-mode[data-theme="amethyst"] {
+  --color-accent: #7A5F7E;
+  --color-accent-gradient: linear-gradient(135deg, #5F4463 0%, #7A5F7E 25%, #957A99 50%, #7A5F7E 75%, #5F4463 100%);
+}
+
+html.light-mode[data-theme="lavender"] {
+  --color-accent: #8A7A8C;
+  --color-accent-gradient: linear-gradient(135deg, #6E5F70 0%, #8A7A8C 25%, #A695A8 50%, #8A7A8C 75%, #6E5F70 100%);
+}
+
+html.light-mode[data-theme="plum"] {
+  --color-accent: #734F71;
+  --color-accent-gradient: linear-gradient(135deg, #573456 0%, #734F71 25%, #8F6B8D 50%, #734F71 75%, #573456 100%);
+}
+
+/* PINKS & ROSES */
+html.light-mode[data-theme="blush-pink"] {
+  --color-accent: #997A7D;
+  --color-accent-gradient: linear-gradient(135deg, #7D5F62 0%, #997A7D 25%, #B59598 50%, #997A7D 75%, #7D5F62 100%);
+}
+
+html.light-mode[data-theme="dusty-rose"] {
+  --color-accent: #7C5F62;
+  --color-accent-gradient: linear-gradient(135deg, #604447 0%, #7C5F62 25%, #987A7D 50%, #7C5F62 75%, #604447 100%);
+}
+
+html.light-mode[data-theme="mauve"] {
+  --color-accent: #846A7C;
+  --color-accent-gradient: linear-gradient(135deg, #684F61 0%, #846A7C 25%, #A08597 50%, #846A7C 75%, #684F61 100%);
+}
+
+/* REDS & BURGUNDIES */
+html.light-mode[data-theme="burgundy"] {
+  --color-accent: #6C4449;
+  --color-accent-gradient: linear-gradient(135deg, #50292E 0%, #6C4449 25%, #885F64 50%, #6C4449 75%, #50292E 100%);
+}
+
+html.light-mode[data-theme="wine-red"] {
+  --color-accent: #764F52;
+  --color-accent-gradient: linear-gradient(135deg, #5A3437 0%, #764F52 25%, #926A6D 50%, #764F52 75%, #5A3437 100%);
+}
+
+html.light-mode[data-theme="crimson"] {
+  --color-accent: #865257;
+  --color-accent-gradient: linear-gradient(135deg, #6A373C 0%, #865257 25%, #A26D72 50%, #865257 75%, #6A373C 100%);
+}
+
+/* GREENS */
+html.light-mode[data-theme="sage-green"] {
+  --color-accent: #69796C;
+  --color-accent-gradient: linear-gradient(135deg, #4D5E50 0%, #69796C 25%, #859488 50%, #69796C 75%, #4D5E50 100%);
+}
+
+html.light-mode[data-theme="mint"] {
+  --color-accent: #798C83;
+  --color-accent-gradient: linear-gradient(135deg, #5E7168 0%, #798C83 25%, #95A89F 50%, #798C83 75%, #5E7168 100%);
+}
+
+html.light-mode[data-theme="emerald"] {
+  --color-accent: #527262;
+  --color-accent-gradient: linear-gradient(135deg, #375747 0%, #527262 25%, #6D8D7D 50%, #527262 75%, #375747 100%);
+}
+
+html.light-mode[data-theme="olive"] {
+  --color-accent: #766F52;
+  --color-accent-gradient: linear-gradient(135deg, #5A5437 0%, #766F52 25%, #928A6D 50%, #766F52 75%, #5A5437 100%);
+}
+
+/* TEALS & AQUAS */
+html.light-mode[data-theme="teal"] {
+  --color-accent: #527272;
+  --color-accent-gradient: linear-gradient(135deg, #375757 0%, #527272 25%, #6D8D8D 50%, #527272 75%, #375757 100%);
+}
+
+html.light-mode[data-theme="aquamarine"] {
+  --color-accent: #6C8484;
+  --color-accent-gradient: linear-gradient(135deg, #506968 0%, #6C8484 25%, #889F9F 50%, #6C8484 75%, #506968 100%);
+}
+
+html.light-mode[data-theme="turquoise"] {
+  --color-accent: #5C7C74;
+  --color-accent-gradient: linear-gradient(135deg, #406159 0%, #5C7C74 25%, #78978F 50%, #5C7C74 75%, #406159 100%);
+}
+
+/* PEACHES & CORALS */
+html.light-mode[data-theme="peach"] {
+  --color-accent: #997A6A;
+  --color-accent-gradient: linear-gradient(135deg, #7D5F4F 0%, #997A6A 25%, #B59585 50%, #997A6A 75%, #7D5F4F 100%);
+}
+
+html.light-mode[data-theme="coral"] {
+  --color-accent: #8C6952;
+  --color-accent-gradient: linear-gradient(135deg, #704E37 0%, #8C6952 25%, #A8856D 50%, #8C6952 75%, #704E37 100%);
+}
+
+/* BROWNS & TANS */
+html.light-mode[data-theme="taupe"] {
+  --color-accent: #765248;
+  --color-accent-gradient: linear-gradient(135deg, #5A372D 0%, #765248 25%, #926D63 50%, #765248 75%, #5A372D 100%);
+}
+
+html.light-mode[data-theme="mocha"] {
+  --color-accent: #866952;
+  --color-accent-gradient: linear-gradient(135deg, #6A4E37 0%, #866952 25%, #A2856D 50%, #866952 75%, #6A4E37 100%);
+}
+
+html.light-mode[data-theme="caramel"] {
+  --color-accent: #8A7452;
+  --color-accent-gradient: linear-gradient(135deg, #6E5937 0%, #8A7452 25%, #A68F6D 50%, #8A7452 75%, #6E5937 100%);
+}
+
+/* Apply theme variables to body */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
+}
+
+/* Update scrollbar colors based on theme */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+* {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Light Mode - Darker colors, same border + opacity bg structure */
+html.light-mode .status-badge.status-open,
+html.light-mode .status-badge.status-active {
+  background: rgba(5, 150, 105, 0.2) !important;
+  color: #047857 !important;
+  border-color: #047857 !important;
+}
+
+html.light-mode .status-badge.status-closed,
+html.light-mode .status-badge.status-inactive {
+  background: rgba(75, 85, 99, 0.2) !important;
+  color: #4b5563 !important;
+  border-color: #4b5563 !important;
+}
+
+html.light-mode .status-badge.status-converted,
+html.light-mode .priority-badge.priority-low {
+  background: rgba(29, 78, 216, 0.2) !important;
+  color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+html.light-mode .priority-badge.priority-high {
+  background: rgba(185, 28, 28, 0.2) !important;
+  color: #b91c1c !important;
+  border-color: #b91c1c !important;
+}
+
+html.light-mode .priority-badge.priority-medium {
+  background: rgba(180, 83, 9, 0.2) !important;
+  color: #b45309 !important;
+  border-color: #b45309 !important;
+}
+
+html.light-mode .payment-badge.payment-paid {
+  background: rgba(5, 150, 105, 0.2) !important;
+  color: #047857 !important;
+  border-color: #047857 !important;
+}
+
+html.light-mode .payment-badge.payment-unpaid {
+  background: rgba(185, 28, 28, 0.2) !important;
+  color: #b91c1c !important;
+  border-color: #b91c1c !important;
+}
+
+html.light-mode .payment-badge.payment-trial {
+  background: rgba(29, 78, 216, 0.2) !important;
+  color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+html.light-mode .role-badge.role-super-admin {
+  background: rgba(180, 83, 9, 0.2) !important;
+  color: #b45309 !important;
+  border-color: #b45309 !important;
+}
+
+html.light-mode .role-badge.role-admin {
+  background: rgba(29, 78, 216, 0.2) !important;
+  color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+html.light-mode .percentage-value {
+  background: rgba(109, 40, 217, 0.2) !important;
+  color: #6d28d9 !important;
+  border-color: #6d28d9 !important;
+}
