@@ -1,22 +1,53 @@
 {
-  "name": "yash-ai",
+  "name": "yash-ai-warp-manager",
   "version": "1.0.0",
-  "description": "",
+  "description": "Track, backup, and manage your Warp AI query history",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "build": "electron-builder --win --x64 --config.win.target=portable",
+    "build:dir": "electron-builder --win --x64 --dir",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "warp",
+    "ai",
+    "history",
+    "backup",
+    "electron"
+  ],
+  "author": "Yash",
+  "license": "MIT",
   "dependencies": {
-    "electron": "^40.1.0",
     "electron-store": "^11.0.2",
     "node-fetch": "^3.3.2",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
+    "electron": "^40.1.0",
+    "electron-builder": "^25.1.8",
     "electron-reload": "^2.0.0-alpha.1"
+  },
+  "build": {
+    "appId": "com.yash.warp-manager",
+    "productName": "Yash AI Warp Manager",
+    "npmRebuild": false,
+    "buildDependenciesFromSource": false,
+    "win": {
+      "target": "nsis",
+      "icon": "LOGO.png",
+      "sign": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "node_modules/sqlite3/**/*"
+    ]
   }
 }
